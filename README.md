@@ -1,4 +1,10 @@
 <<<<<<< HEAD
+This is a React-based news application that shows the latest headlines.  
+- Built with React.js and Bootstrap  
+- Fetches live news from an API  
+- Includes Home, About, and News sections
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -73,3 +79,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # NewsApp
 This is my first newsapp
 >>>>>>> c5c93fd0e96dcffd534f6e5e1c6e0d578bd77b3b
+# NewsApp 📰
