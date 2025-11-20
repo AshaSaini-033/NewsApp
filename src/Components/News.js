@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import PropTypes from 'prop-types';
 import Newsitem from './Newsitem';
 import Spinner from './Spinner';
 
 export class News extends Component {
+  static defaultProps = {
+    country: 'us',
+    pageSize: 9,
+    category: 'general',
+  }
+
+  static propTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string,
+    apiKey: PropTypes.string.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +27,6 @@ export class News extends Component {
       totalResults: 0,
     };
   }
-
   async componentDidMount() {
     this.fetchNews();
   }
@@ -21,7 +34,7 @@ export class News extends Component {
   // ✅ Fetch News function
   fetchNews = async () => {
     const { page } = this.state;
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0c602dd7d3c44f4e8967524f3a9a3aa5&page=${page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${page}&pageSize=${this.props.pageSize}`;
 
     this.setState({ loading: true });
 
@@ -51,7 +64,7 @@ export class News extends Component {
   render() {
     return (
       <>
-        <h1 className="text-center">Asha's Newsapp - Top Headlines</h1>
+        <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>Asha's Newsapp - Top {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Headlines</h1>
 
         <InfiniteScroll
           dataLength={this.state.articles.length}
