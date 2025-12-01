@@ -1,7 +1,7 @@
 
 import './App.css';
 import React, { Component } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 import News from './components/News';
 import {
   BrowserRouter as Router,
@@ -11,7 +11,7 @@ import {
 
 export default class App extends Component {
   pageSize = 9;
-  apiKey = "0c602dd7d3c44f4e8967524f3a9a3aa5"; // Your API key
+  apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
   render() {
     return (
